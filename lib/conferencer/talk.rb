@@ -5,11 +5,15 @@ module Conferencer
     attr_reader :length, :title
 
     def initialize(payload)
-      payload_chunks = payload.split(" ")
-      length = payload_chunks.pop
+      @length = talk_length(payload)
+      @title = payload
+    end
 
-      @length = length == "lightning" ? LIGHTNING_TALK_LENGTH : length.to_i
-      @title = payload_chunks.join(" ")
+    private
+
+    def talk_length(payload)
+      length = payload.split(" ").pop
+      length == "lightning" ? LIGHTNING_TALK_LENGTH : length.to_i
     end
   end
 end
