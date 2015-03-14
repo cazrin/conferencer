@@ -1,4 +1,5 @@
 require "conferencer/conference"
+require "conferencer/schedule_formatter"
 
 module Conferencer
   class CMD
@@ -8,7 +9,8 @@ module Conferencer
       conference = Conference.new(talks)
       conference.build_schedule!
 
-      conference.full_schedule
+      schedule = conference.full_schedule
+      ScheduleFormatter.new(schedule).print
     end
   end
 end
