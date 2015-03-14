@@ -1,7 +1,7 @@
 require "helper"
 require "conferencer/cmd"
 
-class TestCMD < Test::Unit::TestCase
+class TestCMD < ConferencerTest
   def test_execute_with_payload
     input = <<-eos.gsub /^\s+/, ""
       Writing Fast Tests Against Enterprise Rails 60min
