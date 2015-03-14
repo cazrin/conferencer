@@ -16,6 +16,8 @@ module Conferencer
       track.talks.each do |talk|
         puts "#{talk.time} #{talk.title}"
       end
+
+      puts
     end
   end
 end
