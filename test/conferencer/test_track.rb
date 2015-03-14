@@ -30,7 +30,7 @@ module Conferencer
         nil,
         "12:00PM",
         nil,
-        "5:00PM"
+        "05:00PM"
       ], @track.talks.map(&:time)
     end
   end
