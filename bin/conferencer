@@ -3,4 +3,4 @@
 $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
 require "conferencer"
 
-puts Conferencer::CMD.execute(STDIN.read)
+Conferencer::CMD.execute(STDIN.read)
