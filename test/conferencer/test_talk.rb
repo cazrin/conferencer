@@ -13,4 +13,9 @@ class TestTalk < ConferencerTest
     assert_equal "Rails for Python Developers lightning", talk.title
     assert_equal 5, talk.length
   end
+
+  def test_initialize_with_optional_time
+    talk = Conferencer::Talk.new("Test talk 45min", "09:00AM")
+    assert_equal "09:00AM", talk.time
+  end
 end

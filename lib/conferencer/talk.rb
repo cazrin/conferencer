@@ -2,10 +2,12 @@ module Conferencer
   class Talk
     LIGHTNING_TALK_LENGTH = 5
 
+    attr_accessor :time
     attr_reader :length, :title
 
-    def initialize(payload)
+    def initialize(payload, time=nil)
       @length = talk_length(payload)
+      @time = time
       @title = payload
     end
 
