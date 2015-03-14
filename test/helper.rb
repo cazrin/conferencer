@@ -3,6 +3,15 @@ require "test-unit"
 class ConferencerTest < Test::Unit::TestCase
   require "conferencer/talk"
 
+  def capture_stdout
+    out = StringIO.new
+    $stdout = out
+    yield
+    return out
+  ensure
+    $stdout = STDOUT
+  end
+
   def talks_fixture
     [
       "Writing Fast Tests Against Enterprise Rails 60min",
