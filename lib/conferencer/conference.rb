@@ -2,8 +2,17 @@ require "conferencer/track"
 
 module Conferencer
   class Conference
-    MORNING_SESSION_MAX_MINS = 180
-    AFTERNOON_SESSION_MAX_MINS = 240
+    SESSIONS = {
+      :morning => {
+        :max_mins => 180,
+        :start_hour => 9
+      },
+
+      :afternoon => {
+        :max_mins => 240,
+        :start_hour => 13
+      }
+    }
 
     SECONDS_PER_MINUTE = 60
 
@@ -14,8 +23,8 @@ module Conferencer
     end
 
     def build_schedule!
-      @track_1 = Track.new("Track 1", morning_talks, afternoon_talks)
-      @track_2 = Track.new("Track 2", morning_talks, afternoon_talks)
+      @track_1 = Track.new("Track 1", session_talks(SESSIONS[:morning]), session_talks(SESSIONS[:afternoon]))
+      @track_2 = Track.new("Track 2", session_talks(SESSIONS[:morning]), session_talks(SESSIONS[:afternoon]))
     end
 
     def full_schedule
@@ -28,32 +37,14 @@ module Conferencer
       time.strftime("%I:%M%p")
     end
 
-    def morning_talks
+    def session_talks(session)
       mins = 0
-      time = Time.new(2015, 1, 1, 9, 0, 0)
+      time = Time.new(2015, 1, 1, session[:start_hour], 0, 0)
 
       @talks.map do |talk|
         next unless talk.time.nil?
 
-        if mins + talk.length <= MORNING_SESSION_MAX_MINS
-          talk.time = format_time(time)
-
-          mins += talk.length
-          time += talk.length * SECONDS_PER_MINUTE
-
-          talk
-        end
-      end.compact
-    end
-
-    def afternoon_talks
-      mins = 0
-      time = Time.new(2015, 1, 1, 13, 0, 0)
-
-      @talks.map do |talk|
-        next unless talk.time.nil?
-
-        if mins + talk.length <= AFTERNOON_SESSION_MAX_MINS
+        if mins + talk.length <= session[:max_mins]
           talk.time = format_time(time)
 
           mins += talk.length
