@@ -93,6 +93,6 @@ Track 2:
 
 ## To do
 
-[ ] Generate a warning if all the talks can't fit in the schedule
-[ ] Configurable number of tracks
-[ ] Support multiple day conferences
+- [ ] Generate a warning if all the talks can't fit in the schedule
+- [ ] Configurable number of tracks
+- [ ] Support multiple day conferences
