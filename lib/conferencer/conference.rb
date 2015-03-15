@@ -12,7 +12,7 @@ module Conferencer
     attr_reader :track_1, :track_2
 
     def initialize(talks)
-      @talks = talks
+      @talks = talks.sort_by { |a| [a.length, a.title] }
     end
 
     def build_schedule!

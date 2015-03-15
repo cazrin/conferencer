@@ -36,6 +36,6 @@ class ConferencerTest < Test::Unit::TestCase
       "User Interface CSS in Rails Apps 30min"
     ].map do |line|
       Conferencer::Talk.new(line)
-    end
+    end.shuffle
   end
 end
