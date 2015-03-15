@@ -3,15 +3,8 @@ require "conferencer/track"
 module Conferencer
   class Conference
     SESSIONS = {
-      :morning => {
-        :max_mins => 180,
-        :start_hour => 9
-      },
-
-      :afternoon => {
-        :max_mins => 240,
-        :start_hour => 13
-      }
+      :morning => OpenStruct.new(:max_mins => 180, :start_hour => 9),
+      :afternoon => OpenStruct.new(:max_mins => 240, :start_hour => 13)
     }
 
     SECONDS_PER_MINUTE = 60
@@ -39,12 +32,12 @@ module Conferencer
 
     def session_talks(session)
       mins = 0
-      time = Time.new(2015, 1, 1, session[:start_hour], 0, 0)
+      time = Time.new(2015, 1, 1, session.start_hour, 0, 0)
 
       @talks.map do |talk|
         next unless talk.time.nil?
 
-        if mins + talk.length <= session[:max_mins]
+        if mins + talk.length <= session.max_mins
           talk.time = format_time(time)
 
           mins += talk.length
