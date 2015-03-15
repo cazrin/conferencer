@@ -1,4 +1,5 @@
 require "test-unit"
+require "stringio"
 
 class ConferencerTest < Test::Unit::TestCase
   require "conferencer/talk"
