@@ -1,5 +1,23 @@
 # Conference Track Management
 
+## Setup
+
+```
+git clone git@github.com:cazrin/conferencer.git
+cd conferencer
+rbenv local 2.2.1
+bundle install
+bundle exec rake
+```
+
+Have your talk file ready (e.g. talks.txt) and run:
+
+```
+cat talks.txt | ruby bin/conferencer
+```
+
+## The problem
+
 You are planning a big programming conference and have received many proposals
 which have passed the initial screen process but you're having trouble fitting
 them into the time constraints of the day -- there are so many possibilities!
@@ -18,7 +36,7 @@ Note that depending on how you choose to complete this problem, your solution
 may give a different ordering or combination of talks into tracks. This is
 acceptable; you don’t need to exactly duplicate the sample output given here.
 
-## Input
+### Example input
 
 ```
 Writing Fast Tests Against Enterprise Rails 60min
@@ -42,7 +60,7 @@ A World Without HackerNews 30min
 User Interface CSS in Rails Apps 30min
 ```
 
-## Output
+### Example output
 
 ```
 Track 1:
