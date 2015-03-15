@@ -1,4 +1,5 @@
 require "conferencer/conference"
+require "conferencer/talk"
 require "conferencer/schedule_formatter"
 
 module Conferencer
