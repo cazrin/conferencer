@@ -90,3 +90,9 @@ Track 2:
 04:00PM Rails for Python Developers lightning
 05:00PM Networking Event
 ```
+
+## To do
+
+[ ] Generate a warning if all the talks can't fit in the schedule
+[ ] Configurable number of tracks
+[ ] Support multiple day conferences
