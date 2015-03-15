@@ -35,7 +35,7 @@ module Conferencer
       time = Time.new(2015, 1, 1, session.start_hour, 0, 0)
 
       @talks.map do |talk|
-        next unless talk.time.nil?
+        next if talk_scheduled?(talk)
 
         if mins + talk.length <= session.max_mins
           talk.time = format_time(time)
@@ -46,6 +46,10 @@ module Conferencer
           talk
         end
       end.compact
+    end
+
+    def talk_scheduled?(talk)
+      !talk.time.nil?
     end
   end
 end
