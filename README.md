@@ -93,6 +93,7 @@ Track 2:
 
 ## To do
 
+- [ ] Logging in development mode
 - [ ] Generate a warning if all the talks can't fit in the schedule
 - [ ] Configurable number of tracks
 - [ ] Support multiple day conferences
