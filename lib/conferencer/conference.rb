@@ -49,7 +49,7 @@ module Conferencer
     end
 
     def talk_scheduled?(talk)
-      !talk.time.nil?
+      talk.time
     end
   end
 end
